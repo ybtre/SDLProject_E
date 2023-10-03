@@ -8,13 +8,14 @@
 void init_game(void)
 {
     init_fonts();
+    //should init game.spritesheet here
 }
 
 void init_SDL(void)
 {
 	int renderer_flags, window_flags;
 
-	renderer_flags = SDL_RENDERER_ACCELERATED;
+	renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
 
 	window_flags = 0;
 
@@ -29,6 +30,12 @@ void init_SDL(void)
 		printf("Couldn't initialize SDL Mixer\n");
 		exit(1);
 	}
+
+    if (TTF_Init() < 0) 
+    {
+		printf("Couldn't initialize SDL TTF: %s\n", TTF_GetError());
+        exit(1);
+    }
 
 	Mix_AllocateChannels(MAX_SND_CHANNELS);
 

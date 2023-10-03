@@ -14,9 +14,19 @@ THUS FAR: ~2h
               TODO:
 ////////////////////////////////////
 
+// 03.10.23 
+- finish basic project structure
+- implement static mockup
+- start work on core loop
+
 ////////////////////////////////////
               DONE:
 ////////////////////////////////////
+
+// 03.10.23
+- played around with FPS timing and caps
+- static mockup implementation tests
+- project structure testing
 
 // 02.10.23 - ~2:45h
 - WIP: basic project skeleton - need to think a bit about how to best structure

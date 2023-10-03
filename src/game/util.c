@@ -8,7 +8,6 @@
 
 inline uint64_t total_malloc    = 0;
 inline uint64_t total_free      = 0;
-
 extern void* mmalloc(uint64_t SIZE)
 {
     void* mem_ptr;
@@ -67,7 +66,14 @@ float get_angle(int X1, int Y1, int X2, int Y2)
     return angle >= 0 ? angle : 360 + angle;
 }
 
-
+int get_scr_width_scaled(void)
+{
+    return(SCREEN_WIDTH * SCREEN_SCALE);
+}
+int get_scr_height_scaled(void)
+{
+    return(SCREEN_HEIGHT * SCREEN_SCALE);
+}
 
 
 

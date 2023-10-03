@@ -12,6 +12,7 @@ inline void update(void);
 inline void render(void);
 
 inline SDL_Texture *cursor_texture;
+inline SDL_Texture *spritesheet;
 
 inline void reset_game(void);
 
@@ -23,6 +24,7 @@ void init_stage(void)
     memset(&stage, 0, sizeof(Stage));
 
     cursor_texture = load_texture("assets/cursor.png");
+    game.spritesheet = load_texture("assets/spritesheet.png"); 
 
     init_player();
     init_entities();
@@ -51,6 +53,6 @@ inline void render(void)
 
 inline void reset_game(void)
 {
-    init_player();
+    //init_player();
     //init_entities();
 }

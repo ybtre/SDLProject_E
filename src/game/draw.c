@@ -11,7 +11,7 @@ inline void add_texture_to_cache(const char *NAME, SDL_Texture *SDLTEXTURE);
 
 void prepare_scene(void)
 {
-	SDL_SetRenderDrawColor(game.renderer, 16, 33, 43, 255);
+	SDL_SetRenderDrawColor(game.renderer, 190, 215, 134, 255);
 	SDL_RenderClear(game.renderer);
 }
 
@@ -65,18 +65,21 @@ void blit(SDL_Texture* TEXTURE, const int X, const int Y, const float SCALE, con
 
 void blit_from_sheet(SDL_Texture* TEXTURE, SDL_Rect DEST, SDL_Rect SRC, const float ANGLE, const float SCALE, const int CENTER)
 {
+    DEST.w = SRC.w * SCALE;
+    DEST.h = SRC.h * SCALE;
+
     if(CENTER)
     {
         DEST.x -= DEST.w / 2;
         DEST.y -= DEST.h / 2;
     }
-
+    
     SDL_RenderCopyEx(game.renderer, TEXTURE, &SRC, &DEST, ANGLE, NULL, SDL_FLIP_NONE);
 
-#ifdef DRAW_RECTS
+//#ifdef DRAW_RECTS
     SDL_SetRenderDrawColor(game.renderer, 255, 0, 0, 255);
     SDL_RenderDrawRect(game.renderer, &DEST);
-#endif  
+//#endif  
 };
 
 void blit_rect(SDL_Texture* TEXTURE, SDL_Rect* SRC, int X, int Y, float SCALE)

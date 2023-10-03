@@ -37,6 +37,8 @@ typedef struct
 
     int             keyboard[MAX_KEYBOARD_KEYS];
 
+    SDL_Texture     *spritesheet;
+
     Texture         texture_cache[TEXTURE_CACHE_MAX];
 } Game;
 extern Game game;
@@ -79,8 +81,6 @@ typedef struct
     SDL_Rect        hitbox;
     Sprite          *sprite;
     int             health;
-    
-    
 } Entity;
 extern Entity player;
 
