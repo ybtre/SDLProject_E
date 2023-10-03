@@ -23,7 +23,7 @@ THUS FAR: ~2h
               DONE:
 ////////////////////////////////////
 
-// 03.10.23
+// 03.10.23 - ~2:30h
 - played around with FPS timing and caps
 - static mockup implementation tests
 - project structure testing
