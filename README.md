@@ -15,10 +15,10 @@ THUS FAR: ~2h
 ////////////////////////////////////
 
 ////////////////////////////////////
-              DONE                 
+              DONE:
 ////////////////////////////////////
 
 // 02.10.23 - ~2:45h
--WIP: basic project skeleton - need to think a bit about how to best structure
--WIP: mockup - mostly ready
--add: spritesheet cut from the mockup, ready to start implementing
+- WIP: basic project skeleton - need to think a bit about how to best structure
+- WIP: mockup - mostly ready
+- add: spritesheet cut from the mockup, ready to start implementing
