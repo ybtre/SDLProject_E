@@ -1,5 +1,5 @@
 #DevLog
-THUS FAR: ~7:30h
+THUS FAR: ~7:30h.
 
 ## Game 2/12 in the 12 games in 10 weeks challenge
 ////////////////////////////////////
