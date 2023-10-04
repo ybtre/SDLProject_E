@@ -1,5 +1,5 @@
 #DevLog
-THUS FAR: ~2h
+THUS FAR: ~7:30h
 
 ## Game 2/12 in the 12 games in 10 weeks challenge
 ////////////////////////////////////
@@ -13,17 +13,25 @@ THUS FAR: ~2h
 ////////////////////////////////////
               TODO:
 ////////////////////////////////////
-
-// 03.10.23 
-- finish basic project structure
-- implement static mockup
-- start work on core loop
+- start work on gameplay core loop
+- random platform spawning
+- platform wrapping
+- player jumping to platforms
+- collision detection/response to kill player(need to think how to design)
+- player lives
+- menu/game over screen
+- sound
 
 ////////////////////////////////////
               DONE:
 ////////////////////////////////////
 
-// 03.10.23
+// 04.10.23 - ~2h
+- static mockup implemented
+- environment layering 
+- environment movement and wrapping
+
+// 03.10.23 - ~2:45h
 - played around with FPS timing and caps
 - static mockup implementation tests
 - project structure testing

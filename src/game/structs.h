@@ -43,6 +43,17 @@ typedef struct
 } Game;
 extern Game game;
 
+typedef enum Layers
+{
+    BG_0,
+    BG_1,
+    BG_2,
+    GAMEPLAY,
+    FG,
+    UI,
+
+    NUM_LAYERS,
+} Layers;
 
 enum Flags 
 {
@@ -80,12 +91,14 @@ typedef struct
 
     SDL_Rect        hitbox;
     Sprite          *sprite;
-    int             health;
+    enum Layers          layer;
 } Entity;
 extern Entity player;
 
 typedef struct
 {
+    //Entity 0 is always player
+    int             entity_count;
     Entity          entities_pool[ENTITIES_MAX];
 }Stage;
 extern Stage stage;

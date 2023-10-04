@@ -17,7 +17,7 @@
 
 #define GRID_SIZE               64
 
-#define ENTITIES_MAX            32
+#define ENTITIES_MAX            64
 
 
 #define MAX_NAME_LENGTH         32

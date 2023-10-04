@@ -33,7 +33,9 @@ void init_player()
     player.sprite = &p_sprite;
 
     player.hitbox = player.sprite->dest;
-    player.health = 3;
+    player.layer = GAMEPLAY;
+
+    stage.entities_pool[0] = player;
 }
 
 
