@@ -6,7 +6,7 @@
 
 #define SCREEN_WIDTH            320
 #define SCREEN_HEIGHT           320
-#define SCREEN_SCALE            4                   // x4 equals 1280x720
+#define SCREEN_SCALE            3                   // x4 equals 1280x720
 
 #define FPS                     60
 

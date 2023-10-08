@@ -17,7 +17,8 @@
 //inline Sprite layer_spr[NUM_LAYERS];
 
 inline void init_layers(void);
-inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER);
+inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER, Entity_Type ENT_TYPE);
+inline void init_platforms(void);
 
 void init_entities(void)
 {
@@ -25,95 +26,117 @@ void init_entities(void)
     init_environment_entity(
             (Vec2i){ get_scr_width_scaled() / 2, get_scr_height_scaled() / 2 },
             (SDL_Rect){ 480, 0, 60, 320}, 
-            BG_0);
+            BG_0, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ get_scr_width_scaled() / 2, (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 480, 0, 60, 320}, 
-            BG_0);
+            BG_0, ENVIRONMENT);
 
     //Layer BG 1
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) - (45 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 208, 0, 80, 320}, 
-            BG_1);
+            BG_1, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (55 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 304, 0, 96, 320}, 
-            BG_1);
+            BG_1, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) - (45 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 208, 0, 80, 320}, 
-            BG_1);
+            BG_1, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (55 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 304, 0, 96, 320}, 
-            BG_1);
+            BG_1, ENVIRONMENT);
 
     //Layer BG 2
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) - (65 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 80, 0, 58, 320}, 
-            BG_2);
+            BG_2, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (65 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 146, 0, 62, 320}, 
-            BG_2);
+            BG_2, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) - (65 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 80, 0, 58, 320}, 
-            BG_2);
+            BG_2, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (65 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 146, 0, 62, 320}, 
-            BG_2);
+            BG_2, ENVIRONMENT);
 
     //Layer GAMEPLAY
-    init_environment_entity(
-            (Vec2i){ (get_scr_width_scaled() / 2) - (65 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
-            (SDL_Rect){ 0, 32, 16, 32}, 
-            GAMEPLAY);
-    init_environment_entity(
-            (Vec2i){ (get_scr_width_scaled() / 2) + (65 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
-            (SDL_Rect){ 0, 32, 16, 32}, 
-            GAMEPLAY);
+    init_platforms();
 
     //Layer FG
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) - (75 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 16, 0, 32, 320}, 
-            FG);
+            FG, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (75 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 48, 0, 32, 320}, 
-            FG);
+            FG, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ 35 * SCREEN_SCALE, get_scr_height_scaled() / 2 },
             (SDL_Rect){ 400, 0, 80, 320}, 
-            FG);
+            FG, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (130 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
             (SDL_Rect){ 400, 0, 80, 320}, 
-            FG);
+            FG, ENVIRONMENT);
 
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) - (75 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 16, 0, 32, 320}, 
-            FG);
+            FG, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (75 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE)  },
             (SDL_Rect){ 48, 0, 32, 320}, 
-            FG);
+            FG, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ 35 * SCREEN_SCALE, (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE)  },
             (SDL_Rect){ 400, 0, 80, 320}, 
-            FG);
+            FG, ENVIRONMENT);
     init_environment_entity(
             (Vec2i){ (get_scr_width_scaled() / 2) + (130 * SCREEN_SCALE), (get_scr_height_scaled() / 2) - (320 * SCREEN_SCALE) },
             (SDL_Rect){ 400, 0, 80, 320}, 
-            FG);
+            FG, ENVIRONMENT);
 }
 
-inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER)
+inline void init_platforms(void)
+{
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 0 * SCREEN_SCALE},
+                (SDL_Rect){ 544, 0, 48, 80}, 
+                GAMEPLAY, PLATFORM);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 80 * SCREEN_SCALE},
+                (SDL_Rect){ 544, 0, 48, 80}, 
+                GAMEPLAY, PLATFORM);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 160 * SCREEN_SCALE},
+                (SDL_Rect){ 544, 0, 48, 80}, 
+                GAMEPLAY, PLATFORM);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 240 * SCREEN_SCALE},
+                (SDL_Rect){ 544, 0, 48, 80}, 
+                GAMEPLAY, PLATFORM);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 260 * SCREEN_SCALE},
+                (SDL_Rect){ 544, 0, 48, 80}, 
+                GAMEPLAY, PLATFORM);
+
+}
+
+inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER, Entity_Type ENT_TYPE)
 {
     Entity e;
     Sprite* s = (Sprite*)malloc(sizeof(Sprite));
@@ -130,6 +153,7 @@ inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER)
     s->src = SRC;
 
     e.layer = LAYER;
+    e.ent_type = ENT_TYPE;
 
     s->dest.x = e.x;
     s->dest.y = e.y;
@@ -163,19 +187,31 @@ void update_entities(void)
             //e->dy = 3;
         else if (e->layer == FG)
             e->dy = 4;
-
         
+        if(e->ent_type == PLATFORM)
+        {
+            e->dy = 3;
+        }
+
         e->x += e->dx;
         e->y += e->dy;
         e->sprite->dest.x = e->x;
         e->sprite->dest.y = e->y;
      
         {//Env entity wrapping
-            if(e->layer != GAMEPLAY)
+            //if(e->layer != GAMEPLAY)
+            if(e->ent_type == PLATFORM || e->ent_type == ENVIRONMENT)
             {
                 if(e->y > get_scr_height_scaled() + ((e->sprite->dest.h / 2) * SCREEN_SCALE))
                 {
-                    e->y = -(((e->sprite->dest.h / 2) * SCREEN_SCALE) - 30);
+                    if(e->ent_type == ENVIRONMENT)
+                    {
+                        e->y = -(((e->sprite->dest.h / 2) * SCREEN_SCALE) - 30);
+                    }
+                    else if(e->ent_type == PLATFORM)
+                    {
+                        e->y = -((e->sprite->dest.h / 2) * SCREEN_SCALE);
+                    }
                 }
             }
         }

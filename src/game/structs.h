@@ -80,6 +80,14 @@ typedef struct
     SDL_Texture     *tex;
 } Sprite;
 
+typedef enum Entity_Type
+{
+    PLAYER      = 0,
+    PLATFORM    = 1,
+    TRAP        = 2,
+    ENVIRONMENT = 3,
+} Entity_Type;
+
 typedef struct
 {
     char            active;
@@ -91,7 +99,8 @@ typedef struct
 
     SDL_Rect        hitbox;
     Sprite          *sprite;
-    enum Layers          layer;
+    Layers          layer;
+    Entity_Type     ent_type;
 } Entity;
 extern Entity player;
 
