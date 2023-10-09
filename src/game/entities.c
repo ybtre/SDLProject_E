@@ -176,6 +176,8 @@ void update_entities(void)
     for(i = 0; i <= stage.entity_count; i++)
     {
         e = &stage.entities_pool[i];
+        if(e->ent_type == PLAYER)
+            continue;
         
         if(e->layer == BG_0)
             e->dy = 1;

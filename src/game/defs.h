@@ -12,7 +12,7 @@
 
 #define PI                      3.14159265358979323846
 
-#define PLAYER_SPEED            2
+#define PLAYER_SPEED            20
 #define PLAYER_DELTA            .5
 
 #define GRID_SIZE               64

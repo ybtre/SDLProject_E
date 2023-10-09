@@ -1,7 +1,7 @@
 #DevLog
-THUS FAR: ~7:30h.
+THUS FAR: ~9:00h.
 
-## Game 2/12 in the 12 games in 10 weeks challenge
+## Game 2/10 in the 10 games in 10 weeks challenge
 ////////////////////////////////////
               NOTE:
 ////////////////////////////////////
@@ -25,6 +25,15 @@ THUS FAR: ~7:30h.
 ////////////////////////////////////
               DONE:
 ////////////////////////////////////
+TODO: 
+- detect player death and game over scr
+
+// 09.10.23 - ~1h
+- player jumping from platform to platform
+
+// 08.10.23 - ~1:30h
+- platform spawning
+- platform movement
 
 // 04.10.23 - ~2h
 - static mockup implemented
