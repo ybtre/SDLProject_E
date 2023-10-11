@@ -37,6 +37,12 @@ void init_SDL(void)
         exit(1);
     }
 
+    game.font = TTF_OpenFont("fonts/font.ttf", 24);
+        if (!game.font) {
+            SDL_Log(TTF_GetError());
+            exit(1);
+        }
+
 	Mix_AllocateChannels(MAX_SND_CHANNELS);
 
 	game.window = SDL_CreateWindow("Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH * SCREEN_SCALE, SCREEN_HEIGHT * SCREEN_SCALE, window_flags);

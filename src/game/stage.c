@@ -26,16 +26,50 @@ void init_stage(void)
     cursor_texture = load_texture("assets/cursor.png");
     game.spritesheet = load_texture("assets/spritesheet.png"); 
 
+    game_state = MAIN_MENU;
+
     init_player();
     init_entities();
 }
 
 inline void update(void)
 {
-    update_player();
+    switch(game_state)
+    {
+        case MAIN_MENU:
+            {
+                if(game.keyboard[SDL_SCANCODE_SPACE])
+                {
+                    reset_game();
+                    game_state = PLAYING;
+                }
+            }
+            break;
+        
+        case PLAYING:
+            {
+                update_player();
 
-    update_entities();
+                update_entities();
 
+                if(stage.entities_pool[0].active == 0)
+                {
+                    game_state = GAME_OVER;
+                }
+            }
+            break;
+
+        case GAME_OVER:
+            {
+                if(game.keyboard[SDL_SCANCODE_SPACE])
+                {
+                    reset_game();
+                    game_state = PLAYING;
+                }
+            }
+            break;
+
+    }
     if(game.keyboard[SDL_SCANCODE_ESCAPE])
     {
         exit(1);
@@ -44,8 +78,41 @@ inline void update(void)
 
 inline void render(void)
 {
-    draw_entities();
-    draw_player();
+    switch(game_state)
+    {
+        case MAIN_MENU:
+            {
+                draw_entities();
+                draw_player();
+
+                char buff[32];
+                sprintf(buff, "PRESS SPACE TO PLAY!");
+
+                SDL_Rect dest = {get_scr_width_scaled() / 5, get_scr_height_scaled() / 2, 0, 0};
+                render_text(buff, dest, 2.f);
+            }
+            break;
+        
+        case PLAYING:
+            {
+                draw_entities();
+                draw_player();
+            }
+            break;
+
+        case GAME_OVER:
+            {
+                draw_entities();
+                draw_player();
+
+                char buff[32];
+                sprintf(buff, "PRESS SPACE TO RESTART!");
+
+                SDL_Rect dest = {get_scr_width_scaled() / 5, get_scr_height_scaled() / 2, 0, 0};
+                render_text(buff, dest, 2.f);
+            }
+            break;
+    }
 
     blit(cursor_texture, game.mouse.x, game.mouse.y, 1.f, 1);
 }
@@ -53,6 +120,6 @@ inline void render(void)
 
 inline void reset_game(void)
 {
-    //init_player();
-    //init_entities();
+    init_player();
+    init_entities();
 }

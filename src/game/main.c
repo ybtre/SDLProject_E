@@ -7,16 +7,16 @@
 #include "input.h"
 #include "stage.h"
 #include "main.h"
+#include "util.h"
 #include <stdint.h>
 #include <stdlib.h>
 
 Game game;
 Entity player;
 Stage stage;
+Game_State game_state;
 
 inline void cap_fps(long *THEN, float *REMAINDER);
-inline void render_text(char* text, SDL_Rect dest);
-inline TTF_Font* font;
 
 int main(int argc, char *argv[])
 {
@@ -28,11 +28,6 @@ int main(int argc, char *argv[])
     memset(&game, 0, sizeof(Game));
     
     init_SDL();
-    font = TTF_OpenFont("fonts/font.ttf", 24);
-        if ( !font ) {
-            SDL_Log(TTF_GetError());
-            exit(1);
-        }
 
     atexit(game_close);
 
@@ -79,11 +74,11 @@ int main(int argc, char *argv[])
         sprintf(curr_perf_buffer, "Current Perf: %f", (float)frame_perf);
 
         SDL_Rect dest = { 10, 10, 0, 0};
-        render_text(fps_buffer, dest);
+        render_text(fps_buffer, dest, 1.f);
         dest.y += 24;
-        render_text(avg_buffer, dest);
+        render_text(avg_buffer, dest, 1.f);
         dest.y += 24;
-        render_text(curr_perf_buffer, dest);
+        render_text(curr_perf_buffer, dest, 1.f);
 
         //SDL_Delay(16.666f - elapsed_ms);
 
@@ -93,19 +88,6 @@ int main(int argc, char *argv[])
     return(0);
 }
 
-inline void render_text(char* text, SDL_Rect dest) {
-	SDL_Color fg = { 255, 255, 255, 255 };
-	SDL_Surface* surf = TTF_RenderText_Solid(font, text, fg);
-
-	dest.w = surf->w;
-	dest.h = surf->h;
-
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(game.renderer, surf);
-
-	SDL_RenderCopy(game.renderer, tex, NULL, &dest);
-	SDL_DestroyTexture(tex);
-    SDL_FreeSurface(surf);
-}
 
 inline void cap_fps(long *THEN, float *REMAINDER)
 {// fps cap logic

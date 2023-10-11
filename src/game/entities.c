@@ -19,6 +19,7 @@
 inline void init_layers(void);
 inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER, Entity_Type ENT_TYPE);
 inline void init_platforms(void);
+inline void init_traps(void);
 
 void init_entities(void)
 {
@@ -70,6 +71,7 @@ void init_entities(void)
 
     //Layer GAMEPLAY
     init_platforms();
+    init_traps();
 
     //Layer FG
     init_environment_entity(
@@ -110,7 +112,7 @@ void init_entities(void)
 inline void init_platforms(void)
 {
         init_environment_entity(
-                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 0 * SCREEN_SCALE},
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 00 * SCREEN_SCALE},
                 (SDL_Rect){ 544, 0, 48, 80}, 
                 GAMEPLAY, PLATFORM);
 
@@ -120,12 +122,12 @@ inline void init_platforms(void)
                 GAMEPLAY, PLATFORM);
 
         init_environment_entity(
-                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 160 * SCREEN_SCALE},
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 140 * SCREEN_SCALE},
                 (SDL_Rect){ 544, 0, 48, 80}, 
                 GAMEPLAY, PLATFORM);
 
         init_environment_entity(
-                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 240 * SCREEN_SCALE},
+                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 220 * SCREEN_SCALE},
                 (SDL_Rect){ 544, 0, 48, 80}, 
                 GAMEPLAY, PLATFORM);
 
@@ -134,6 +136,19 @@ inline void init_platforms(void)
                 (SDL_Rect){ 544, 0, 48, 80}, 
                 GAMEPLAY, PLATFORM);
 
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 330 * SCREEN_SCALE},
+                (SDL_Rect){ 544, 0, 48, 80}, 
+                GAMEPLAY, PLATFORM);
+
+}
+
+inline void init_traps(void)
+{
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 135 },
+                (SDL_Rect){ 0, 0, 120, 140 }, 
+                GAMEPLAY, TRAP);
 }
 
 inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER, Entity_Type ENT_TYPE)
@@ -168,11 +183,13 @@ inline void init_environment_entity(Vec2i POS, SDL_Rect SRC, Layers LAYER, Entit
     stage.entities_pool[stage.entity_count] = e;
 }
         
-
 void update_entities(void)
 {
     int i = 0;
     Entity* e = NULL; 
+    SDL_Rect p_rect = stage.entities_pool[0].sprite->dest;
+    p_rect.w *= SCREEN_SCALE;
+    p_rect.h *= SCREEN_SCALE;
     for(i = 0; i <= stage.entity_count; i++)
     {
         e = &stage.entities_pool[i];
@@ -190,9 +207,19 @@ void update_entities(void)
         else if (e->layer == FG)
             e->dy = 4;
         
-        if(e->ent_type == PLATFORM)
+        if(e->ent_type == PLATFORM || e->ent_type == TRAP)
         {
             e->dy = 3;
+        }
+
+        if(e->ent_type == TRAP)
+        {
+            SDL_Rect t_rect = e->sprite->dest;
+            if(SDL_HasIntersection(&p_rect, &t_rect))
+            {
+                SDL_Log("COLLIDE");
+                stage.entities_pool[0].active = 0;
+            }
         }
 
         e->x += e->dx;
@@ -222,9 +249,20 @@ void update_entities(void)
 
 void draw_entities(void)
 {
+    Entity* e;
     int i = 0;
     for(i = 0; i <= stage.entity_count; i++)
     {
-        blit_from_sheet(game.spritesheet, stage.entities_pool[i].sprite->dest, stage.entities_pool[i].sprite->src, 0, SCREEN_SCALE, 1); 
+        e = &stage.entities_pool[i];
+
+        if(e->ent_type == TRAP)
+        {
+            SDL_SetRenderDrawColor(game.renderer, 255, 0, 0, 255);
+            SDL_RenderDrawRect(game.renderer, &e->sprite->dest);
+        } 
+        else 
+        {
+            blit_from_sheet(game.spritesheet, e->sprite->dest, e->sprite->src, 0, SCREEN_SCALE, 1); 
+        }
     }
 }

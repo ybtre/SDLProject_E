@@ -1,12 +1,13 @@
 #DevLog
-THUS FAR: ~9:00h.
+THUS FAR: ~10:00h.
 
 ## Game 2/10 in the 10 games in 10 weeks challenge
 ////////////////////////////////////
               NOTE:
 ////////////////////////////////////
 #### Goals:
-- spend 2-4h per day
+- spend min ~12h per game
+- aim for 10 games by week 10 
 - have a small scope finished game by the end of the week
 - even if not finished - still release it
 
@@ -26,7 +27,14 @@ THUS FAR: ~9:00h.
               DONE:
 ////////////////////////////////////
 TODO: 
-- detect player death and game over scr
+- reset game
+- add all traps 
+
+// 10.10.23 - ~0:45h
+- added game screen states
+- basic collision detection with player
+- basic death of player
+- basic transition from game states
 
 // 09.10.23 - ~1h
 - player jumping from platform to platform

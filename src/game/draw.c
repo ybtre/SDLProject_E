@@ -85,6 +85,7 @@ void blit_from_sheet(SDL_Texture* TEXTURE, SDL_Rect DEST, SDL_Rect SRC, const fl
     
     SDL_RenderCopyEx(game.renderer, TEXTURE, &SRC, &DEST, ANGLE, NULL, SDL_FLIP_NONE);
 
+//#define DRAW_RECTS
 #ifdef DRAW_RECTS
     SDL_SetRenderDrawColor(game.renderer, 255, 0, 0, 255);
     SDL_RenderDrawRect(game.renderer, &DEST);

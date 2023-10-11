@@ -2,6 +2,7 @@
 #define STRUCTS_H
 
 #include "../Include/SDL2/SDL.h"
+#include "../Include/SDL2/SDL_ttf.h"
 #include "defs.h"
 
 typedef struct
@@ -37,11 +38,21 @@ typedef struct
 
     int             keyboard[MAX_KEYBOARD_KEYS];
 
+    TTF_Font        *font;
+
     SDL_Texture     *spritesheet;
 
     Texture         texture_cache[TEXTURE_CACHE_MAX];
 } Game;
 extern Game game;
+
+typedef enum Game_State
+{
+    MAIN_MENU,
+    PLAYING,
+    GAME_OVER,
+} Game_State;
+extern Game_State game_state;
 
 typedef enum Layers
 {

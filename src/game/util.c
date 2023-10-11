@@ -42,6 +42,19 @@ int collision(int X1, int Y1, int W1, int H1, int X2, int Y2, int W2, int H2)
     return((MAX(X1, X2) < MIN(X1 + W1, X2 + W2)) && (MAX(Y1, Y2) < MIN(Y1 + H1, Y2 + H2)));
 }
 
+void render_text(char* text, SDL_Rect dest, float SCALE) {
+	SDL_Color fg = { 255, 255, 255, 255 };
+	SDL_Surface* surf = TTF_RenderText_Solid(game.font, text, fg);
+
+	dest.w = surf->w * SCALE;
+	dest.h = surf->h * SCALE;
+
+	SDL_Texture* tex = SDL_CreateTextureFromSurface(game.renderer, surf);
+
+	SDL_RenderCopy(game.renderer, tex, NULL, &dest);
+	SDL_DestroyTexture(tex);
+    SDL_FreeSurface(surf);
+}
 void calc_slope(int X1, int Y1, int X2, int Y2, float *DX, float *DY)
 {
     int steps = MAX(abs(X1 - X2), abs(Y1 - Y2));

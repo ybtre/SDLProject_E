@@ -13,9 +13,9 @@ void init_player()
 {
     player.active = 1;
 
-    player.x = (get_scr_width_scaled() / 2) - (57 * SCREEN_SCALE);
+    player.x = (get_scr_width_scaled() / 2);
     player.y = (get_scr_height_scaled() / 2) + (140 * SCREEN_SCALE);
-    is_on_left_side = 0;
+    is_on_left_side = 1;
     
     player.dx = 0;
     player.dy = 0;
@@ -64,7 +64,7 @@ void update_player(void)
             is_on_left_side = 0;
         }
     }
-    
+
     player.x += player.dx;
     player.sprite->dest.x = player.x;
     if(player.x < (get_scr_width_scaled() / 2) - (49 * SCREEN_SCALE))
@@ -80,5 +80,13 @@ void update_player(void)
 void draw_player(void)
 {
     blit_from_sheet(game.spritesheet, player.sprite->dest, player.sprite->src, 0, SCREEN_SCALE, 1);
+
+    SDL_Rect d = player.sprite->dest;
+    d.w *= SCREEN_SCALE;
+    d.h *= SCREEN_SCALE;
+    d.x -= (d.w/2);
+    d.y -= (d.h/2);
+    SDL_SetRenderDrawColor(game.renderer, 0, 255, 0, 255);
+    SDL_RenderDrawRect(game.renderer, &d);
 }
 

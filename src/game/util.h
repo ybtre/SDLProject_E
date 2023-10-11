@@ -1,9 +1,10 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#include <stdint.h>
+#include "common.h"
 
 int collision(int X1, int Y1, int W1, int H1, int X2, int Y2, int W2, int H2);
+void render_text(char* text, SDL_Rect dest, float SCALE);
 void calc_slope(int X1, int Y1, int X2, int Y2, float *DX, float *DY);
 float get_angle(int X1, int Y1, int X2, int Y2);
 int get_scr_width_scaled(void);
