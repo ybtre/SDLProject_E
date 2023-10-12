@@ -1,5 +1,5 @@
 #DevLog
-THUS FAR: ~10:00h.
+THUS FAR: ~12:00h.
 
 ## Game 2/10 in the 10 games in 10 weeks challenge
 ////////////////////////////////////
@@ -14,21 +14,16 @@ THUS FAR: ~10:00h.
 ////////////////////////////////////
               TODO:
 ////////////////////////////////////
-- start work on gameplay core loop
-- random platform spawning
-- platform wrapping
-- player jumping to platforms
-- collision detection/response to kill player(need to think how to design)
 - player lives
-- menu/game over screen
 - sound
 
 ////////////////////////////////////
               DONE:
 ////////////////////////////////////
-TODO: 
-- reset game
-- add all traps 
+// 11.10.23 - ~2:00h
+- game reset
+- traps spawning
+- traps wrapping
 
 // 10.10.23 - ~0:45h
 - added game screen states

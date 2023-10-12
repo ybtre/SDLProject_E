@@ -42,7 +42,6 @@ void init_player()
     stage.entities_pool[0] = player;
 }
 
-
 void update_player(void)
 {
     if(game.keyboard[SDL_SCANCODE_SPACE])
@@ -86,7 +85,24 @@ void draw_player(void)
     d.h *= SCREEN_SCALE;
     d.x -= (d.w/2);
     d.y -= (d.h/2);
+
+    /*
     SDL_SetRenderDrawColor(game.renderer, 0, 255, 0, 255);
     SDL_RenderDrawRect(game.renderer, &d);
+    */
 }
 
+void reset_player(void)
+{
+    player.active = 1;
+    stage.entities_pool[0].active = 1;
+    player.x = (get_scr_width_scaled() / 2);
+    player.y = (get_scr_height_scaled() / 2) + (140 * SCREEN_SCALE);
+    is_on_left_side = 1;
+    
+    player.dx = 0;
+    player.dy = 0;
+
+    p_sprite.dest.x = player.x;
+    p_sprite.dest.y = player.y;
+}

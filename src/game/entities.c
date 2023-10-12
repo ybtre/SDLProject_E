@@ -112,15 +112,16 @@ void init_entities(void)
 inline void init_platforms(void)
 {
         init_environment_entity(
-                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 00 * SCREEN_SCALE},
-                (SDL_Rect){ 544, 0, 48, 80}, 
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
+                (SDL_Rect){ 544, 0, 48, 320}, 
                 GAMEPLAY, PLATFORM);
 
         init_environment_entity(
-                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 80 * SCREEN_SCALE},
-                (SDL_Rect){ 544, 0, 48, 80}, 
+                (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), get_scr_height_scaled() / 2 },
+                (SDL_Rect){ 544, 0, 48, 320}, 
                 GAMEPLAY, PLATFORM);
 
+        /*
         init_environment_entity(
                 (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 140 * SCREEN_SCALE},
                 (SDL_Rect){ 544, 0, 48, 80}, 
@@ -140,14 +141,37 @@ inline void init_platforms(void)
                 (Vec2i){ (get_scr_width_scaled() / 2) + (85 * SCREEN_SCALE), 330 * SCREEN_SCALE},
                 (SDL_Rect){ 544, 0, 48, 80}, 
                 GAMEPLAY, PLATFORM);
-
+        */
 }
 
 inline void init_traps(void)
 {
         init_environment_entity(
-                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 135 },
-                (SDL_Rect){ 0, 0, 120, 140 }, 
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 43 * SCREEN_SCALE },
+                (SDL_Rect){ 0, 0, 90, 120 }, 
+                GAMEPLAY, TRAP);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 183 * SCREEN_SCALE },
+                (SDL_Rect){ 0, 0, 90, 80 }, 
+                GAMEPLAY, TRAP);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) - (85 * SCREEN_SCALE), 305 * SCREEN_SCALE },
+                (SDL_Rect){ 0, 0, 90, 80 }, 
+                GAMEPLAY, TRAP);
+
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) + (55 * SCREEN_SCALE), 0},
+                (SDL_Rect){ 0, 0, 100, 90 }, 
+                GAMEPLAY, TRAP);
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) + (55 * SCREEN_SCALE), 130 * SCREEN_SCALE },
+                (SDL_Rect){ 0, 0, 100, 120 }, 
+                GAMEPLAY, TRAP);
+        init_environment_entity(
+                (Vec2i){ (get_scr_width_scaled() / 2) + (55 * SCREEN_SCALE), 265 * SCREEN_SCALE },
+                (SDL_Rect){ 0, 0, 100, 50 }, 
                 GAMEPLAY, TRAP);
 }
 
@@ -207,18 +231,15 @@ void update_entities(void)
         else if (e->layer == FG)
             e->dy = 4;
         
-        if(e->ent_type == PLATFORM || e->ent_type == TRAP)
-        {
-            e->dy = 3;
-        }
-
         if(e->ent_type == TRAP)
         {
+            e->dy = 3;
             SDL_Rect t_rect = e->sprite->dest;
             if(SDL_HasIntersection(&p_rect, &t_rect))
             {
                 SDL_Log("COLLIDE");
                 stage.entities_pool[0].active = 0;
+                player.active = 0;
             }
         }
 
@@ -229,7 +250,7 @@ void update_entities(void)
      
         {//Env entity wrapping
             //if(e->layer != GAMEPLAY)
-            if(e->ent_type == PLATFORM || e->ent_type == ENVIRONMENT)
+            if(e->ent_type != PLAYER)
             {
                 if(e->y > get_scr_height_scaled() + ((e->sprite->dest.h / 2) * SCREEN_SCALE))
                 {
@@ -240,6 +261,10 @@ void update_entities(void)
                     else if(e->ent_type == PLATFORM)
                     {
                         e->y = -((e->sprite->dest.h / 2) * SCREEN_SCALE);
+                    }
+                    else if(e->ent_type == TRAP)
+                    {
+                        e->y = -(e->sprite->dest.h) * SCREEN_SCALE;
                     }
                 }
             }
@@ -257,12 +282,20 @@ void draw_entities(void)
 
         if(e->ent_type == TRAP)
         {
-            SDL_SetRenderDrawColor(game.renderer, 255, 0, 0, 255);
-            SDL_RenderDrawRect(game.renderer, &e->sprite->dest);
+            SDL_SetRenderDrawColor(game.renderer, 235, 162, 84, 255);
+            //SDL_RenderDrawRect(game.renderer, &e->sprite->dest);
+            SDL_RenderFillRect(game.renderer, &e->sprite->dest);
         } 
         else 
         {
             blit_from_sheet(game.spritesheet, e->sprite->dest, e->sprite->src, 0, SCREEN_SCALE, 1); 
         }
     }
+}
+
+void reset_entities(void)
+{
+    stage.entity_count = 0;
+
+    init_entities();
 }

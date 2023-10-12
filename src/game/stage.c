@@ -120,6 +120,6 @@ inline void render(void)
 
 inline void reset_game(void)
 {
-    init_player();
-    init_entities();
+    reset_player();
+    reset_entities();
 }
