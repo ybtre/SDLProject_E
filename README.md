@@ -1,5 +1,22 @@
 #DevLog
 THUS FAR: ~12:00h.
+## Upwards
+
+<br>
+
+<details>
+  <summary>Dev Gifs!!</summary>
+  
+  [![Image from Gyazo](https://i.gyazo.com/31e2f9daf57020cfd4bb008b5d82b738.gif)](https://gyazo.com/31e2f9daf57020cfd4bb008b5d82b738)
+
+  [![Image from Gyazo](https://i.gyazo.com/ef1a21be8b06acb31f9b273a7f39720e.gif)](https://gyazo.com/ef1a21be8b06acb31f9b273a7f39720e)
+
+  [![Image from Gyazo](https://i.gyazo.com/d1ea5df61ad21f3f3f18cc34b45cf341.gif)](https://gyazo.com/d1ea5df61ad21f3f3f18cc34b45cf341)
+  
+</details>
+<br>
+<br>
+<br>
 
 ## Game 2/10 in the 10 games in 10 weeks challenge
 ////////////////////////////////////
