@@ -7,12 +7,9 @@ THUS FAR: ~12:00h.
 <details>
   <summary>Dev Gifs!!</summary>
 
-  [![Image from Gyazo](https://i.gyazo.com/31e2f9daf57020cfd4bb008b5d82b738.gif)](https://gyazo.com/31e2f9daf57020cfd4bb008b5d82b738)
+  [![Upwards Final](upwards_final.gif)]
 
-  [![Image from Gyazo](https://i.gyazo.com/ef1a21be8b06acb31f9b273a7f39720e.gif)](https://gyazo.com/ef1a21be8b06acb31f9b273a7f39720e)
-  
-  [![Image from Gyazo](https://i.gyazo.com/31e2f9daf57020cfd4bb008b5d82b738.gif)](https://gyazo.com/31e2f9daf57020cfd4bb008b5d82b738)
-
+  [![Upwards Parallax](wip_parralax.gif)]
   
 </details>
 <br>
