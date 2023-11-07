@@ -4,14 +4,10 @@ THUS FAR: ~12:00h.
 
 <br>
 
-<details>
-  <summary>Dev Gifs!!</summary>
-
   [![Upwards Final](upwards_final.gif)]
 
   [![Upwards Parallax](wip_parralax.gif)]
   
-</details>
 <br>
 <br>
 <br>
